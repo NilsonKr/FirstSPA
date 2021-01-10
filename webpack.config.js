@@ -1,29 +1,32 @@
-const path = require('path')  //Nos permite acceder a donde estámos en las carpetas. Ya sea en local o en la nube.
-const HtmlWebpackPlugin = require('html-webpack-plugin') //Archivo necesario para trabajar con HTML.
+const path = require('path')  //Allow us to access to the current path of our project either on local o on cloud
+const HtmlWebpackPlugin = require('html-webpack-plugin') //Neccesary File to work with Html
 
 module.exports = {
-    entry: './src/index.js',        //Punto de entrada de nuestro projecto
+    entry: './src/index.js',        //Entry point of our project
     output:{
-        path: path.resolve(__dirname, 'dist'),      //Punto de salidad luego de compilarlo en la carpeta distribucion con el nombre main.js
+        path: path.resolve(__dirname, 'dist'),      //Output Point when the project have finished of compile
         filename: 'main.js'
     },
-    resolve: ['.js'],       //Manejamos las extensiones de los archivos que vamos a manejar
-    module: {           //Estructura de babel
+    resolve: {
+      extensions: ['.js'],  //Drive the extension that we going to use
+    },      
+    module: {           //Babel Structure
         rules:[
             {
-               test: /\.js?$/,              //Nos permite identificar los archivos según se encuentran en nuestro entorno.
-               exclude: /node_modules/,     //Excluimos node_modules de nuestro compilamiento
+               test: /\.js?$/,              //Allow us to identify files on our enviroment
+               exclude: /node_modules/,     //Exclude the unnecesary files
                use: {
-                   loader: 'babel-loader'       //Usamos el loader de babel que instalamos
+                   loader: 'babel-loader'       //Using the loader from babel
                } 
             }
         ]
     },
-    plugins:[                           //Declaramos los puglins que utilizaremos en la configuracion del proyecto
-        new HtmlWebpackPlugin([{    //Permite trabajar con los archivos HTML
+    plugins:[                           //Declare the plugins that we going to need in the development 
+        new HtmlWebpackPlugin([{    //Allow to compile html files
             inject: true,
-            template: './public/index.html',   //Dirección donde se encuentra el template principal
-            filename: './index.html'        //El nombre que tendra el archivo final del output html
+            template: './public/index.html',   //Main address where find our principal main template
+            filename: './index.html'        //The name that it will have the template file on the output
         }])
     ]
 }
+
