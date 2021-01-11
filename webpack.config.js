@@ -22,11 +22,11 @@ module.exports = {
         ]
     },
     plugins:[                           //Declare the plugins that we going to need in the development 
-        new HtmlWebpackPlugin([{    //Allow to compile html files
+        new HtmlWebpackPlugin({    //Allow to compile html files
             inject: true,
             template: './public/index.html',   //Main address where find our principal main template
             filename: './index.html'        //The name that it will have the template file on the output
-        }])
+        })
     ]
 }
 
