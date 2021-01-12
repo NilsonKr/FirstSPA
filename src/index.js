@@ -1,5 +1,8 @@
-import router from './routes/index.js'
+import router from './routes/index.js';
+
 
 window.addEventListener('load', router)
 window.addEventListener('hashchange', router)
+
+
 
