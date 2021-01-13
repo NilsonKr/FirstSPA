@@ -1,5 +1,6 @@
 const path = require('path')  //Allow us to access to the current path of our project either on local o on cloud
 const HtmlWebpackPlugin = require('html-webpack-plugin') //Neccesary File to work with Html
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
     entry: './src/index.js',        //Entry point of our project
@@ -26,7 +27,11 @@ module.exports = {
             inject: true,
             template: './public/index.html',   //Main address where find our principal main template
             filename: './index.html'        //The name that it will have the template file on the output
-        })
+        }),
+        new CopyWebpackPlugin({
+            patterns: [{ from: './src/styles/styles.css',
+            to: '' }],
+          })
     ]
 }
 
